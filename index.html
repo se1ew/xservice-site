@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
 
-    <title>Xservice — Сервисный центр</title>
+    <title>Xservice — Сервисный центр по ремонту</title>
 
-    <meta name="description" content="Современный сервисный центр: ремонт телефонов, ноутбуков и компьютеров. Быстро. Аккуратно. С гарантией.">
+    <meta name="description" content="Сервисный центр: ремонт телефонов, ноутбуков и компьютеров. Диагностика, понятные сроки и аккуратная работа.">
     <meta name="robots" content="index,follow">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Xservice — Сервисный центр">
-    <meta property="og:description" content="Ремонт техники с акцентом на качество и скорость. Запись онлайн — в 2 клика.">
+    <meta property="og:description" content="Ремонт ПК, ноутбуков и телефонов. Запись онлайн — в пару кликов.">
     <meta property="og:locale" content="ru_RU">
 
     <meta name="theme-color" content="#f5f5f7">
@@ -21,165 +21,173 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
 
- <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
 
-<!-- ===== ШАПКА ===== -->
- <header class="site-header" id="top" data-header>
-     <div class="container header-inner">
-         <a class="brand" href="#top" aria-label="На главную">
-             <span class="brand-mark" aria-hidden="true"></span>
-             <span class="brand-title">xservice</span>
-         </a>
+    <header class="site-header" id="top" data-header>
+        <div class="container header-inner">
+            <a class="brand" href="#top" aria-label="На главную">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span class="brand-title">xservice</span>
+            </a>
 
-         <nav class="nav" aria-label="Основная навигация" data-nav>
-             <a class="nav-link" href="#price">Цены</a>
-             <a class="nav-link" href="#about">Преимущества</a>
-             <a class="nav-link" href="#services">Услуги</a>
-             <a class="nav-link" href="#reviews">Отзывы</a>
-             <a class="nav-link" href="#contacts">Контакты</a>
-         </nav>
+            <nav class="nav" aria-label="Основная навигация" data-nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#price">Цены</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Преимущества</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Отзывы</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
 
-         <div class="header-actions">
-             <button class="btn btn-secondary" type="button" data-open-modal="request">Заявка</button>
-             <button class="icon-btn" type="button" aria-label="Открыть меню" data-menu-button>
-                 <span class="icon-btn-lines" aria-hidden="true"></span>
-             </button>
-         </div>
-     </div>
- </header>
+            <div class="header-actions">
+                <button class="btn btn-secondary" type="button" data-open-modal="request">Заявка</button>
+                <button class="icon-btn" type="button" aria-label="Открыть меню" data-menu-button>
+                    <span class="icon-btn-lines" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
 
 <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
- <main id="content">
-     <section class="section section-hero">
-         <div class="container hero-grid">
-             <div class="hero-copy">
-                 <h1 class="hero-title">Ремонт техники
-                     <span class="hero-title-accent">без стресса</span>
-                 </h1>
-                 <p class="hero-subtitle">Минималистичный сервисный центр. Быстрое оформление, прозрачные цены, аккуратная работа.</p>
+    <main id="content">
+        <section class="section section-hero" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <h1 class="hero-title" id="hero-title">Ремонт техники
+                        <span class="hero-title-accent">без стресса</span>
+                    </h1>
+                    <p class="hero-subtitle">Сервисный центр: ПК, ноутбуки и телефоны. Аккуратно, прозрачно, в понятные сроки.</p>
 
-                 <div class="hero-actions">
-                     <button class="btn btn-primary btn-lg" type="button" data-open-modal="request">Оставить заявку</button>
-                     <a class="btn btn-ghost btn-lg" href="#price">Смотреть цены</a>
-                 </div>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg" type="button" data-open-modal="request">Оставить заявку</button>
+                        <a class="btn btn-ghost btn-lg" href="#price">Смотреть цены</a>
+                    </div>
 
-                 <div class="hero-badges" aria-label="Ключевые преимущества">
-                     <div class="badge">Диагностика</div>
-                     <div class="badge">Сроки</div>
-                     <div class="badge">Гарантия</div>
-                 </div>
-             </div>
+                    <ul class="hero-badges" aria-label="Ключевые преимущества">
+                        <li class="badge">Диагностика</li>
+                        <li class="badge">Сроки</li>
+                        <li class="badge">Гарантия</li>
+                    </ul>
+                </div>
 
-             <div class="hero-card" aria-hidden="true">
-                 <div class="hero-card-glass">
-                     <div class="hero-card-row">
-                         <div class="dot dot-blue"></div>
-                         <div class="dot dot-gray"></div>
-                         <div class="dot dot-gray"></div>
-                     </div>
-                     <div class="hero-card-title">Запись онлайн</div>
-                     <div class="hero-card-text">Оставьте заявку — мы свяжемся и уточним детали.</div>
-                     <div class="hero-card-chip">iOS‑style UX</div>
-                 </div>
-             </div>
-         </div>
-     </section>
+                <aside class="hero-card" aria-hidden="true">
+                    <div class="hero-card-glass">
+                        <div class="hero-card-row">
+                            <div class="dot dot-blue"></div>
+                            <div class="dot dot-gray"></div>
+                            <div class="dot dot-gray"></div>
+                        </div>
+                        <div class="hero-card-title">Запись онлайн</div>
+                        <div class="hero-card-text">Оставьте заявку — мы свяжемся и уточним детали.</div>
+                        <div class="hero-card-chip">iOS‑style UX</div>
+                    </div>
+                </aside>
+            </div>
+        </section>
 
 
 <!-- ===== ПРЕИМУЩЕСТВА ===== -->
-     <section class="section" id="about">
-         <div class="container">
-             <header class="section-head">
-                 <h2 class="section-title">Преимущества</h2>
-                 <p class="section-subtitle">Собрали главное — без лишних обещаний, только то, что действительно важно.</p>
-             </header>
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="container">
+                <header class="section-head">
+                    <h2 class="section-title" id="about-title">Преимущества</h2>
+                    <p class="section-subtitle">Собрали главное — без лишних обещаний, только то, что действительно важно.</p>
+                </header>
 
-             <div class="cards-grid">
-                 <article class="card">
-                     <h3 class="card-title">Аккуратно</h3>
-                     <p class="card-text">Чистая работа, внимательность к деталям, бережное обращение с техникой.</p>
-                 </article>
-                 <article class="card">
-                     <h3 class="card-title">Быстро</h3>
-                     <p class="card-text">Понятные сроки и спокойная коммуникация. Никаких «завтра-послезавтра».</p>
-                 </article>
-                 <article class="card">
-                     <h3 class="card-title">Прозрачно</h3>
-                     <p class="card-text">Сначала диагностика и согласование — потом работа. Без сюрпризов.</p>
-                 </article>
-                 <article class="card">
-                     <h3 class="card-title">Гарантия</h3>
-                     <p class="card-text">Фиксируем результат. Если нужно — возвращаемся к задаче быстро.</p>
-                 </article>
-             </div>
-         </div>
-     </section>
+                <div class="cards-grid" role="list">
+                    <article class="card" role="listitem">
+                        <h3 class="card-title">Аккуратно</h3>
+                        <p class="card-text">Чистая работа, внимательность к деталям, бережное обращение с техникой.</p>
+                    </article>
+                    <article class="card" role="listitem">
+                        <h3 class="card-title">Быстро</h3>
+                        <p class="card-text">Понятные сроки и спокойная коммуникация. Никаких «завтра-послезавтра».</p>
+                    </article>
+                    <article class="card" role="listitem">
+                        <h3 class="card-title">Прозрачно</h3>
+                        <p class="card-text">Сначала диагностика и согласование — потом работа. Без сюрпризов.</p>
+                    </article>
+                    <article class="card" role="listitem">
+                        <h3 class="card-title">Гарантия</h3>
+                        <p class="card-text">Фиксируем результат. Если нужно — возвращаемся к задаче быстро.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-     <section class="section" id="services">
-         <div class="container">
-             <header class="section-head">
-                 <h2 class="section-title">Ремонтируем</h2>
-                 <p class="section-subtitle">ПК, ноутбуки и смартфоны. Можно начать с заявки — и мы подскажем, что делать дальше.</p>
-             </header>
+        <section class="section" id="services" aria-labelledby="services-title">
+            <div class="container">
+                <header class="section-head">
+                    <h2 class="section-title" id="services-title">Услуги</h2>
+                    <p class="section-subtitle">ПК, ноутбуки и смартфоны. Можно начать с заявки — и мы подскажем, что делать дальше.</p>
+                </header>
 
-             <div class="cards-grid">
-                 <article class="card card-service">
-                     <div class="service-icon" aria-hidden="true">ПК</div>
-                     <h3 class="card-title">Компьютеры</h3>
-                     <p class="card-text">Диагностика, чистка, апгрейд, установка ОС и софта.</p>
-                 </article>
-                 <article class="card card-service">
-                     <div class="service-icon" aria-hidden="true">NB</div>
-                     <h3 class="card-title">Ноутбуки</h3>
-                     <p class="card-text">Чистка, замена термопасты, клавиатура, матрица, питание.</p>
-                 </article>
-                 <article class="card card-service">
-                     <div class="service-icon" aria-hidden="true">📱</div>
-                     <h3 class="card-title">Телефоны</h3>
-                     <p class="card-text">Экран, разъёмы, аккумулятор, восстановление после влаги.</p>
-                 </article>
-                 <article class="card card-service">
-                     <div class="service-icon" aria-hidden="true">⚙</div>
-                     <h3 class="card-title">Диагностика</h3>
-                     <p class="card-text">Сначала определяем причину — потом предлагаем решение и цену.</p>
-                 </article>
-             </div>
-         </div>
-     </section>
+                <div class="cards-grid" role="list">
+                    <article class="card card-service" role="listitem">
+                        <div class="service-icon" aria-hidden="true">ПК</div>
+                        <h3 class="card-title">Компьютеры</h3>
+                        <p class="card-text">Диагностика, чистка, апгрейд, установка ОС и софта.</p>
+                    </article>
+                    <article class="card card-service" role="listitem">
+                        <div class="service-icon" aria-hidden="true">NB</div>
+                        <h3 class="card-title">Ноутбуки</h3>
+                        <p class="card-text">Чистка, замена термопасты, клавиатура, матрица, питание.</p>
+                    </article>
+                    <article class="card card-service" role="listitem">
+                        <div class="service-icon" aria-hidden="true">📱</div>
+                        <h3 class="card-title">Телефоны</h3>
+                        <p class="card-text">Экран, разъёмы, аккумулятор, восстановление после влаги.</p>
+                    </article>
+                    <article class="card card-service" role="listitem">
+                        <div class="service-icon" aria-hidden="true">⚙</div>
+                        <h3 class="card-title">Диагностика</h3>
+                        <p class="card-text">Сначала определяем причину — потом предлагаем решение и цену.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
 
 <!-- ===== ЦЕНЫ ===== -->
-     <section class="section" id="price">
-         <div class="container">
-             <header class="section-head">
-                 <h2 class="section-title">Цены</h2>
-                 <p class="section-subtitle">Примерная стоимость. Итоговая цена зависит от модели и состояния устройства.</p>
-             </header>
+        <section class="section" id="price" aria-labelledby="price-title">
+            <div class="container">
+                <header class="section-head">
+                    <h2 class="section-title" id="price-title">Цены</h2>
+                    <p class="section-subtitle">Примерная стоимость. Итоговая цена зависит от модели и состояния устройства.</p>
+                </header>
 
-             <div class="table card card-table" role="region" aria-label="Прайс-лист" tabindex="0">
-                 <div class="table-row table-head" role="row">
-                     <div class="table-cell" role="columnheader">Услуга</div>
-                     <div class="table-cell" role="columnheader">Стоимость</div>
-                 </div>
-                 <div class="table-row" role="row">
-                     <div class="table-cell" role="cell">Замена экрана</div>
-                     <div class="table-cell" role="cell">от 30</div>
-                 </div>
-                 <div class="table-row" role="row">
-                     <div class="table-cell" role="cell">Чистка ноутбука</div>
-                     <div class="table-cell" role="cell">от 20</div>
-                 </div>
-                 <div class="table-row" role="row">
-                     <div class="table-cell" role="cell">Установка ОС</div>
-                     <div class="table-cell" role="cell">от 15</div>
-                 </div>
-             </div>
+                <div class="card card-table" role="region" aria-label="Прайс-лист" tabindex="0">
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Услуга</th>
+                                <th scope="col">Стоимость</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Замена экрана</td>
+                                <td>от 30</td>
+                            </tr>
+                            <tr>
+                                <td>Чистка ноутбука</td>
+                                <td>от 20</td>
+                            </tr>
+                            <tr>
+                                <td>Установка ОС</td>
+                                <td>от 15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
              <div class="cta-row">
                  <button class="btn btn-primary" type="button" data-open-modal="request">Уточнить стоимость</button>
@@ -190,70 +198,72 @@
 
 
 <!-- ===== ОТЗЫВЫ ===== -->
-     <section class="section" id="reviews">
-         <div class="container">
-             <header class="section-head">
-                 <h2 class="section-title">Отзывы</h2>
-                 <p class="section-subtitle">Коротко, по делу. Как на карточках в App Store.</p>
-             </header>
+        <section class="section" id="reviews" aria-labelledby="reviews-title">
+            <div class="container">
+                <header class="section-head">
+                    <h2 class="section-title" id="reviews-title">Отзывы</h2>
+                    <p class="section-subtitle">Коротко, по делу. Как на карточках в App Store.</p>
+                </header>
 
-             <div class="reviews-grid">
-                 <article class="review-card">
-                     <div class="review-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-                     <p class="review-text">Отличный сервис. Всё быстро и аккуратно.</p>
-                     <div class="review-meta">Клиент</div>
-                 </article>
-                 <article class="review-card">
-                     <div class="review-stars" aria-label="Оценка 4 из 5">★★★★☆</div>
-                     <p class="review-text">Сделали быстро, объяснили по-человечески.</p>
-                     <div class="review-meta">Клиент</div>
-                 </article>
-                 <article class="review-card">
-                     <div class="review-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-                     <p class="review-text">Понравился подход: спокойно, прозрачно, без навязчивости.</p>
-                     <div class="review-meta">Клиент</div>
-                 </article>
-             </div>
-         </div>
-     </section>
+                <div class="reviews-grid" role="list">
+                    <article class="review-card" role="listitem">
+                        <p class="review-stars" aria-label="Оценка 5 из 5">★★★★★</p>
+                        <p class="review-text">Отличный сервис. Всё быстро и аккуратно.</p>
+                        <footer class="review-meta">Клиент</footer>
+                    </article>
+                    <article class="review-card" role="listitem">
+                        <p class="review-stars" aria-label="Оценка 4 из 5">★★★★☆</p>
+                        <p class="review-text">Сделали быстро, объяснили по-человечески.</p>
+                        <footer class="review-meta">Клиент</footer>
+                    </article>
+                    <article class="review-card" role="listitem">
+                        <p class="review-stars" aria-label="Оценка 5 из 5">★★★★★</p>
+                        <p class="review-text">Понравился подход: спокойно, прозрачно, без навязчивости.</p>
+                        <footer class="review-meta">Клиент</footer>
+                    </article>
+                </div>
+            </div>
+        </section>
 
 
 <!-- ===== КОНТАКТЫ ===== -->
-     <section class="section" id="contacts">
-         <div class="container">
-             <header class="section-head">
-                 <h2 class="section-title">Контакты</h2>
-                 <p class="section-subtitle">Оставили как шаблон. Заполни позже или принимай заявки через форму.</p>
-             </header>
+        <section class="section" id="contacts" aria-labelledby="contacts-title">
+            <div class="container">
+                <header class="section-head">
+                    <h2 class="section-title" id="contacts-title">Контакты</h2>
+                    <p class="section-subtitle">Шаблон секции. Заполни позже или принимай заявки через форму.</p>
+                </header>
 
-             <div class="cards-grid">
-                 <article class="card">
-                     <h3 class="card-title">Телефон</h3>
-                     <p class="card-text">—</p>
-                 </article>
-                 <article class="card">
-                     <h3 class="card-title">Почта</h3>
-                     <p class="card-text">—</p>
-                 </article>
-                 <article class="card">
-                     <h3 class="card-title">Адрес</h3>
-                     <p class="card-text">—</p>
-                 </article>
-                 <article class="card">
-                     <h3 class="card-title">График</h3>
-                     <p class="card-text">—</p>
-                 </article>
-             </div>
-         </div>
-     </section>
+                <address class="contacts" aria-label="Контактные данные">
+                    <div class="cards-grid" role="list">
+                        <article class="card" role="listitem">
+                            <h3 class="card-title">Телефон</h3>
+                            <p class="card-text">—</p>
+                        </article>
+                        <article class="card" role="listitem">
+                            <h3 class="card-title">Почта</h3>
+                            <p class="card-text">—</p>
+                        </article>
+                        <article class="card" role="listitem">
+                            <h3 class="card-title">Адрес</h3>
+                            <p class="card-text">—</p>
+                        </article>
+                        <article class="card" role="listitem">
+                            <h3 class="card-title">График</h3>
+                            <p class="card-text">—</p>
+                        </article>
+                    </div>
+                </address>
+            </div>
+        </section>
+    </main>
 
-     <footer class="site-footer">
-         <div class="container footer-inner">
-             <p class="footer-copy">© 2026 xservice. Шаблон.</p>
-             <button class="btn btn-ghost" type="button" data-open-modal="request">Оставить заявку</button>
-         </div>
-     </footer>
- </main>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="footer-copy">© 2026 xservice.</p>
+            <button class="btn btn-ghost" type="button" data-open-modal="request">Оставить заявку</button>
+        </div>
+    </footer>
 
  <!-- ===== МОДАЛЬНОЕ ОКНО: ЗАЯВКА ===== -->
  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="request-title" aria-hidden="true" data-modal="request">
@@ -297,6 +307,6 @@
 
  <div class="toast" aria-live="polite" aria-atomic="true" data-toast></div>
 
- <script src="script.js" defer></script>
+ <script src="assets/js/main.js" defer></script>
 </body>
 </html>
