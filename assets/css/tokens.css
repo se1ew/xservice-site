@@ -1,0 +1,145 @@
+
+/*
+  Design Tokens (Apple / iOS inspired)
+  Use these variables in main.css for consistent UI.
+*/
+
+:root{
+  /* Brand / Accent */
+  --color-accent: #007AFF; /* iOS Blue */
+  --color-accent-pressed: #0060DF;
+  --color-accent-soft: rgba(0, 122, 255, 0.12);
+  --color-accent-soft-2: rgba(0, 122, 255, 0.08);
+
+  /* Neutrals (Apple-like) */
+  --color-bg: #F5F5F7;
+  --color-bg-elevated: #FFFFFF;
+  --color-text: rgba(18, 18, 20, 0.92);
+  --color-text-secondary: rgba(18, 18, 20, 0.64);
+  --color-text-tertiary: rgba(18, 18, 20, 0.44);
+  --color-border: rgba(0, 0, 0, 0.10);
+  --color-border-soft: rgba(0, 0, 0, 0.06);
+
+  /* Glass (surfaces) */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg-strong: rgba(255, 255, 255, 0.86);
+  --glass-bg-weak: rgba(255, 255, 255, 0.58);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-blur: 16px;
+  --glass-blur-strong: 22px;
+
+  /* Shadows (subtle, layered) */
+  --shadow-0: 0 0 0 rgba(0,0,0,0);
+  --shadow-1: 0 6px 18px rgba(0,0,0,0.08);
+  --shadow-2: 0 12px 34px rgba(0,0,0,0.10);
+  --shadow-3: 0 22px 70px rgba(0,0,0,0.16);
+  --shadow-accent: 0 14px 36px rgba(0, 122, 255, 0.22);
+
+  /* Radius (iOS cards feel) */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Spacing scale (8pt-ish) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 56px;
+  --space-12: 64px;
+  --space-13: 72px;
+  --space-14: 80px;
+  --space-15: 96px;
+
+  /* Layout / Grid */
+  --container-max: 1200px;
+  --container-pad: 18px;
+  --grid-gap: 12px;
+  --grid-gap-lg: 16px;
+
+  /* Typography */
+  --font-system: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-brand: "Inter Tight", var(--font-system);
+  --font-sans: var(--font-system);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Responsive type scale (Apple-ish) */
+  --text-xs: clamp(12px, 1.1vw, 13px);
+  --text-sm: clamp(13px, 1.15vw, 14px);
+  --text-md: clamp(15px, 1.25vw, 16px);
+  --text-lg: clamp(17px, 1.45vw, 18px);
+  --text-xl: clamp(20px, 1.9vw, 22px);
+
+  --h6: clamp(14px, 1.2vw, 15px);
+  --h5: clamp(16px, 1.35vw, 17px);
+  --h4: clamp(18px, 1.65vw, 20px);
+  --h3: clamp(20px, 2.1vw, 24px);
+  --h2: clamp(24px, 3.0vw, 34px);
+  --h1: clamp(34px, 5.6vw, 56px);
+
+  /* Line height */
+  --leading-compact: 1.15;
+  --leading-body: 1.5;
+  --leading-ui: 1.35;
+
+  /* Letter spacing (tracking) */
+  --tracking-display: -0.03em;
+  --tracking-title: -0.02em;
+  --tracking-body: -0.01em;
+
+  /* Motion */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-spring: cubic-bezier(.2, .9, .2, 1);
+  --duration-fast: 140ms;
+  --duration-md: 220ms;
+  --duration-slow: 320ms;
+
+  /* Components defaults (aliases for convenience) */
+  --btn-radius: var(--radius-pill);
+  --card-radius: var(--radius-lg);
+  --card-bg: var(--glass-bg);
+  --card-border: var(--glass-border);
+  --card-shadow: var(--shadow-1);
+  --focus-ring: 0 0 0 4px rgba(0, 122, 255, 0.16);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --color-bg: #0B0B0F;
+    --color-bg-elevated: #121218;
+    --color-text: rgba(255, 255, 255, 0.92);
+    --color-text-secondary: rgba(255, 255, 255, 0.66);
+    --color-text-tertiary: rgba(255, 255, 255, 0.44);
+    --color-border: rgba(255, 255, 255, 0.14);
+    --color-border-soft: rgba(255, 255, 255, 0.10);
+
+    --glass-bg: rgba(18, 18, 24, 0.62);
+    --glass-bg-strong: rgba(18, 18, 24, 0.78);
+    --glass-bg-weak: rgba(18, 18, 24, 0.48);
+    --glass-border: rgba(255, 255, 255, 0.14);
+
+    --shadow-1: 0 10px 26px rgba(0,0,0,0.42);
+    --shadow-2: 0 18px 52px rgba(0,0,0,0.50);
+    --shadow-3: 0 26px 90px rgba(0,0,0,0.58);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  :root{
+    --duration-fast: 1ms;
+    --duration-md: 1ms;
+    --duration-slow: 1ms;
+  }
+}
