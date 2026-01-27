@@ -184,4 +184,99 @@
       closeModal('request');
     });
   }
+
+  /* Smooth scroll (JS fallback + close menu on anchor) */
+  const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+
+  $$('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href') || '';
+      if (!href || href === '#') return;
+
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      // keep native behavior for new tab, etc.
+      if (e.defaultPrevented) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      e.preventDefault();
+      closeMenu();
+
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    });
+  });
+
+  /* Reveal on scroll */
+  const canAnimate = !prefersReducedMotion;
+
+  const revealCandidates = [
+    ...$$('section.section'),
+    ...$$('.card'),
+    ...$$('.review-card'),
+  ];
+
+  revealCandidates.forEach((el) => {
+    el.setAttribute('data-reveal', '');
+  });
+
+  if (canAnimate && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    );
+
+    $$('[data-reveal]').forEach((el) => io.observe(el));
+  } else {
+    $$('[data-reveal]').forEach((el) => el.classList.add('is-revealed'));
+  }
+
+  /* Parallax (subtle, Apple-like) */
+  const parallaxEls = [
+    $('.hero-card-glass'),
+    $('.hero-copy'),
+  ].filter(Boolean);
+
+  parallaxEls.forEach((el) => {
+    el.setAttribute('data-parallax', '');
+  });
+
+  if (canAnimate && parallaxEls.length) {
+    let raf = 0;
+    const updateParallax = () => {
+      raf = 0;
+      const max = 18;
+      const vh = Math.max(1, window.innerHeight);
+
+      parallaxEls.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        const mid = r.top + r.height / 2;
+        const t = (mid - vh / 2) / (vh / 2); // -1..1
+        const y = Math.max(-max, Math.min(max, -t * max));
+        el.style.setProperty('--parallax-y', `${y.toFixed(2)}px`);
+      });
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
 })();
