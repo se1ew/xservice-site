@@ -36,7 +36,8 @@
                 <span class="brand-title">xservice</span>
             </a>
 
-            <nav class="nav" aria-label="Основная навигация" data-nav>
+            <nav class="nav" id="site-nav" aria-label="Основная навигация" data-nav>
+                
                 <ul class="nav-list">
                     <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
                     <li class="nav-item"><a class="nav-link" href="#price">Цены</a></li>
@@ -48,7 +49,7 @@
 
             <div class="header-actions">
                 <button class="btn btn-secondary" type="button" data-open-modal="request">Заявка</button>
-                <button class="icon-btn" type="button" aria-label="Открыть меню" data-menu-button>
+                <button class="icon-btn" type="button" aria-label="Открыть меню" aria-controls="site-nav" aria-expanded="false" data-menu-button>
                     <span class="icon-btn-lines" aria-hidden="true"></span>
                 </button>
             </div>
@@ -268,7 +269,7 @@
  <!-- ===== МОДАЛЬНОЕ ОКНО: ЗАЯВКА ===== -->
  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="request-title" aria-hidden="true" data-modal="request">
      <div class="modal-backdrop" data-close-modal></div>
-     <div class="modal-sheet" role="document">
+     <div class="modal-sheet" role="document" tabindex="-1">
          <div class="modal-head">
              <h2 class="modal-title" id="request-title">Заявка на ремонт</h2>
              <button class="icon-btn" type="button" aria-label="Закрыть" data-close-modal>
@@ -277,22 +278,28 @@
          </div>
 
          <form class="form" id="request-form" novalidate>
+             <p class="visually-hidden" id="request-form-help">Поля с ошибками будут отмечены. После исправления ошибок можно отправить заявку.</p>
+             <p class="visually-hidden" id="request-form-error" role="alert" aria-live="assertive"></p>
+
              <label class="field">
                  <span class="field-label">Имя</span>
-                 <input class="field-input" name="name" autocomplete="name" required minlength="2" placeholder="Например, Алексей">
-                 <span class="field-error" data-error-for="name"></span>
+                 <input class="field-input" id="field-name" name="name" autocomplete="name" required minlength="2" placeholder="Например, Алексей" aria-describedby="name-hint name-error request-form-help">
+                 <span class="visually-hidden" id="name-hint">Минимум 2 символа.</span>
+                 <span class="field-error" id="name-error" data-error-for="name"></span>
              </label>
 
              <label class="field">
                  <span class="field-label">Телефон</span>
-                 <input class="field-input" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7">
-                 <span class="field-error" data-error-for="phone"></span>
+                 <input class="field-input" id="field-phone" name="phone" inputmode="tel" autocomplete="tel" required placeholder="+7" aria-describedby="phone-hint phone-error request-form-help">
+                 <span class="visually-hidden" id="phone-hint">Например: +7 999 123-45-67.</span>
+                 <span class="field-error" id="phone-error" data-error-for="phone"></span>
              </label>
 
              <label class="field">
                  <span class="field-label">Что сломалось</span>
-                 <textarea class="field-input field-textarea" name="message" rows="4" required minlength="10" placeholder="Опиши проблему в 1–2 предложениях"></textarea>
-                 <span class="field-error" data-error-for="message"></span>
+                 <textarea class="field-input field-textarea" id="field-message" name="message" rows="4" required minlength="10" placeholder="Опиши проблему в 1–2 предложениях" aria-describedby="message-hint message-error request-form-help"></textarea>
+                 <span class="visually-hidden" id="message-hint">Минимум 10 символов.</span>
+                 <span class="field-error" id="message-error" data-error-for="message"></span>
              </label>
 
              <div class="form-actions">

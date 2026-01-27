@@ -7,6 +7,8 @@
   const nav = $('[data-nav]');
   const menuButton = $('[data-menu-button]');
   const toast = $('[data-toast]');
+  const main = document.querySelector('main');
+  const footer = document.querySelector('footer');
 
   /* Sticky header state */
   const updateHeader = () => {
@@ -67,8 +69,30 @@
   /* Modal */
   const body = document.body;
   let lastActive = null;
+  let trapHandler = null;
 
   const getModal = (name) => document.querySelector(`[data-modal="${name}"]`);
+
+  const getFocusable = (root) =>
+    $$('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])', root)
+      .filter((el) => el instanceof HTMLElement && !el.hasAttribute('disabled') && el.offsetParent !== null);
+
+  const setBackgroundInert = (value) => {
+    // Prefer inert when available. Fallback to aria-hidden.
+    const targets = [header, main, footer].filter(Boolean);
+    targets.forEach((el) => {
+      if (!el) return;
+      if ('inert' in el) {
+        el.inert = value;
+      } else {
+        if (value) {
+          el.setAttribute('aria-hidden', 'true');
+        } else {
+          el.removeAttribute('aria-hidden');
+        }
+      }
+    });
+  };
 
   const openModal = (name) => {
     const modal = getModal(name);
@@ -77,10 +101,33 @@
     lastActive = document.activeElement;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
+    setBackgroundInert(true);
+
     body.style.overflow = 'hidden';
 
-    const focusable = $('input, textarea, button, [href], [tabindex]:not([tabindex="-1"])', modal);
-    focusable?.focus?.();
+    const focusable = getFocusable(modal);
+    const first = focusable[0] || $('.modal-sheet', modal);
+    (first instanceof HTMLElement ? first : null)?.focus?.();
+
+    // Focus trap
+    trapHandler = (e) => {
+      if (e.key !== 'Tab') return;
+      const current = getFocusable(modal);
+      if (!current.length) return;
+      const firstEl = current[0];
+      const lastEl = current[current.length - 1];
+      const active = document.activeElement;
+      if (!(active instanceof HTMLElement)) return;
+
+      if (e.shiftKey && active === firstEl) {
+        e.preventDefault();
+        lastEl.focus();
+      } else if (!e.shiftKey && active === lastEl) {
+        e.preventDefault();
+        firstEl.focus();
+      }
+    };
+    document.addEventListener('keydown', trapHandler);
   };
 
   const closeModal = (name) => {
@@ -89,7 +136,14 @@
 
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
+    setBackgroundInert(false);
+
     body.style.overflow = '';
+
+    if (trapHandler) {
+      document.removeEventListener('keydown', trapHandler);
+      trapHandler = null;
+    }
 
     if (lastActive && typeof lastActive.focus === 'function') {
       lastActive.focus();
@@ -125,11 +179,22 @@
 
   /* Form: demo validation (no sending) */
   const form = document.getElementById('request-form');
+  const formAlert = document.getElementById('request-form-error');
 
   const setFieldError = (name, message) => {
     const el = document.querySelector(`[data-error-for="${name}"]`);
     if (!el) return;
     el.textContent = message || '';
+
+    const field = form?.querySelector(`[name="${name}"]`);
+    if (field instanceof HTMLElement) {
+      field.setAttribute('aria-invalid', message ? 'true' : 'false');
+    }
+  };
+
+  const setFormAlert = (message) => {
+    if (!formAlert) return;
+    formAlert.textContent = message || '';
   };
 
   const normalizePhone = (v) => v.replace(/\s+/g, '').trim();
@@ -155,11 +220,39 @@
   };
 
   if (form) {
+    const validateField = (field) => {
+      const name = field.name;
+      const data = {
+        name: (form.querySelector('[name="name"]')?.value || '').toString(),
+        phone: (form.querySelector('[name="phone"]')?.value || '').toString(),
+        message: (form.querySelector('[name="message"]')?.value || '').toString(),
+      };
+      const errors = validate(data);
+      setFieldError(name, errors[name]);
+      return errors[name];
+    };
+
+    // Live validation + UX hints
     form.addEventListener('input', (e) => {
       const t = e.target;
       if (!(t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement)) return;
-      setFieldError(t.name, '');
+      setFormAlert('');
+
+      if (t.name === 'phone') {
+        // Soft sanitize: keep digits, +, (), -, spaces
+        const next = (t.value || '').toString().replace(/[^0-9+()\-\s]/g, '');
+        if (next !== t.value) t.value = next;
+      }
+
+      // validate only after some typing
+      if ((t.value || '').toString().length > 1) validateField(t);
     });
+
+    form.addEventListener('blur', (e) => {
+      const t = e.target;
+      if (!(t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement)) return;
+      validateField(t);
+    }, true);
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -168,12 +261,15 @@
       const data = Object.fromEntries(formData.entries());
       const errors = validate(data);
 
+      setFormAlert('');
+
       setFieldError('name', errors.name);
       setFieldError('phone', errors.phone);
       setFieldError('message', errors.message);
 
       const firstErrorField = Object.keys(errors)[0];
       if (firstErrorField) {
+        setFormAlert('Проверьте поля формы — есть ошибки.');
         const field = form.querySelector(`[name="${firstErrorField}"]`);
         field?.focus?.();
         return;
@@ -181,6 +277,8 @@
 
       showToast('Заявка сохранена (демо). Отправка будет добавлена позже.');
       form.reset();
+      setFormAlert('');
+      ['name','phone','message'].forEach((n) => setFieldError(n, ''));
       closeModal('request');
     });
   }
