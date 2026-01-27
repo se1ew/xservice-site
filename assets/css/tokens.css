@@ -62,9 +62,22 @@
 
   /* Layout / Grid */
   --container-max: 1200px;
-  --container-pad: 18px;
+  --container-pad: clamp(16px, 4vw, 24px);
   --grid-gap: 12px;
   --grid-gap-lg: 16px;
+
+  /* Breakpoints (documentation tokens)
+     Note: media queries still use raw px values for compatibility.
+  */
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
+  --bp-large: 1280px;
+
+  /* Section rhythm */
+  --section-pad-y: clamp(40px, 6vw, 72px);
+  --section-pad-y-compact: clamp(28px, 5vw, 56px);
+  --content-max: 72ch;
 
   /* Typography */
   --font-system: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Arial, sans-serif;

@@ -74,6 +74,16 @@ h6{font-size: var(--h6)}
   padding-right: var(--container-pad);
 }
 
+/* Layout utilities (mobile-first) */
+.stack{display:flex; flex-direction:column; gap: var(--grid-gap)}
+.row{display:flex; flex-wrap:wrap; gap: var(--grid-gap); align-items:center}
+.row-between{justify-content:space-between}
+.row-center{justify-content:center}
+.grid{display:grid; gap: var(--grid-gap)}
+.grid-2{grid-template-columns: repeat(2, minmax(0, 1fr))}
+.grid-3{grid-template-columns: repeat(3, minmax(0, 1fr))}
+.grid-4{grid-template-columns: repeat(4, minmax(0, 1fr))}
+
 /* Utility: visually hidden (for accessibility) */
 .visually-hidden{
   position: absolute;
@@ -316,7 +326,9 @@ h6{font-size: var(--h6)}
 .icon-btn-x::after{transform: translate(-50%, -50%) rotate(-45deg)}
 
 /* Sections */
-.section{padding: var(--space-12) 0}
+.section{
+  padding: var(--section-pad-y) 0;
+}
 
 .section-head{margin-bottom: var(--space-4)}
 
@@ -485,13 +497,23 @@ h6{font-size: var(--h6)}
 .nav.is-open .nav-link{border-radius: var(--radius-md)}
 
 /* Responsive */
-@media (min-width: 880px){
-  .nav{display:flex}
-  [data-menu-button]{display:none}
+@media (min-width: 480px){
+  /* mobile landscape / big phones */
+}
+
+@media (min-width: 768px){
+  /* tablets */
   .cards-grid{grid-template-columns: repeat(2, minmax(0, 1fr))}
 }
 
-@media (min-width: 1120px){
+@media (min-width: 1024px){
+  /* desktop */
+  .nav{display:flex}
+  [data-menu-button]{display:none}
+}
+
+@media (min-width: 1280px){
+  /* large desktop */
   .cards-grid{grid-template-columns: repeat(4, minmax(0, 1fr))}
 }
 
@@ -665,7 +687,7 @@ h6{font-size: var(--h6)}
 .footer-copy{margin: 0; color: var(--color-text-secondary)}
 
 /* Responsive adjustments */
-@media (min-width: 880px){
+@media (min-width: 1024px){
   .hero-grid{grid-template-columns: 1.2fr .8fr; align-items: stretch}
   .reviews-grid{grid-template-columns: repeat(3, minmax(0, 1fr))}
 }
