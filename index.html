@@ -8,21 +8,46 @@
     <title>Xservice — Сервисный центр по ремонту</title>
 
     <meta name="description" content="Сервисный центр: ремонт телефонов, ноутбуков и компьютеров. Диагностика, понятные сроки и аккуратная работа.">
-    <meta name="robots" content="index,follow">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+
+    <link rel="canonical" href="/">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Xservice — Сервисный центр">
     <meta property="og:description" content="Ремонт ПК, ноутбуков и телефонов. Запись онлайн — в пару кликов.">
+    <meta property="og:url" content="/">
     <meta property="og:locale" content="ru_RU">
 
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Xservice — Сервисный центр">
+    <meta name="twitter:description" content="Ремонт ПК, ноутбуков и телефонов. Запись онлайн — в пару кликов.">
+
     <meta name="theme-color" content="#f5f5f7">
+    <meta name="application-name" content="Xservice">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <link rel="preload" href="assets/css/tokens.css" as="style">
+    <link rel="preload" href="assets/css/main.css" as="style">
     <link rel="stylesheet" href="assets/css/tokens.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Xservice",
+        "description": "Сервисный центр: ремонт телефонов, ноутбуков и компьютеров.",
+        "areaServed": "RU",
+        "makesOffer": [
+          {"@type": "Offer", "name": "Ремонт компьютеров"},
+          {"@type": "Offer", "name": "Ремонт ноутбуков"},
+          {"@type": "Offer", "name": "Ремонт телефонов"}
+        ]
+      }
+    </script>
 </head>
 
 <body>
@@ -58,7 +83,7 @@
 
 
 <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
-    <main id="content">
+    <main id="content" tabindex="-1">
         <section class="section section-hero" aria-labelledby="hero-title">
             <div class="container hero-grid">
                 <div class="hero-copy">
@@ -88,7 +113,7 @@
                         </div>
                         <div class="hero-card-title">Запись онлайн</div>
                         <div class="hero-card-text">Оставьте заявку — мы свяжемся и уточним детали.</div>
-                        <div class="hero-card-chip">iOS‑style UX</div>
+                        <button class="btn btn-primary btn-lg" type="button" data-open-modal="request">Оставить заявку</button>
                     </div>
                 </aside>
             </div>
@@ -267,7 +292,7 @@
     </footer>
 
  <!-- ===== МОДАЛЬНОЕ ОКНО: ЗАЯВКА ===== -->
- <div class="modal" role="dialog" aria-modal="true" aria-labelledby="request-title" aria-hidden="true" data-modal="request">
+ <div class="modal" role="dialog" aria-modal="true" aria-labelledby="request-title" aria-describedby="request-form-help" aria-hidden="true" data-modal="request">
      <div class="modal-backdrop" data-close-modal></div>
      <div class="modal-sheet" role="document" tabindex="-1">
          <div class="modal-head">

@@ -1,17 +1,17 @@
 
 /*
-  Design Tokens (Apple / iOS inspired)
+  Design Tokens
   Use these variables in main.css for consistent UI.
 */
 
 :root{
   /* Brand / Accent */
-  --color-accent: #007AFF; /* iOS Blue */
+  --color-accent: #007AFF; /* Accent Blue */
   --color-accent-pressed: #0060DF;
   --color-accent-soft: rgba(0, 122, 255, 0.12);
   --color-accent-soft-2: rgba(0, 122, 255, 0.08);
 
-  /* Neutrals (Apple-like) */
+  /* Neutrals */
   --color-bg: #F5F5F7;
   --color-bg-elevated: #FFFFFF;
   --color-text: rgba(18, 18, 20, 0.92);
@@ -35,7 +35,7 @@
   --shadow-3: 0 22px 70px rgba(0,0,0,0.16);
   --shadow-accent: 0 14px 36px rgba(0, 122, 255, 0.22);
 
-  /* Radius (iOS cards feel) */
+  /* Radius */
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 22px;
@@ -88,7 +88,7 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Responsive type scale (Apple-ish) */
+  /* Responsive type scale */
   --text-xs: clamp(12px, 1.1vw, 13px);
   --text-sm: clamp(13px, 1.15vw, 14px);
   --text-md: clamp(15px, 1.25vw, 16px);

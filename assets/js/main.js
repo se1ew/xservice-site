@@ -342,7 +342,7 @@
     $$('[data-reveal]').forEach((el) => el.classList.add('is-revealed'));
   }
 
-  /* Parallax (subtle, Apple-like) */
+  /* Parallax (subtle) */
   const parallaxEls = [
     $('.hero-card-glass'),
     $('.hero-copy'),
